@@ -192,36 +192,36 @@
     <img src="img/logo.png" alt="Aurum Beauty HN">
   </div>
   <ul class="nav-links">
-    <li><a href="#catalogo">Catálogo</a></li>
-    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#catalogo">CatÃ¡logo</a></li>
+    <li><a href="#como-funciona">CÃ³mo funciona</a></li>
   </ul>
   <button class="cart-btn" onclick="toggleCart()">
-    🛒 Mi pedido <span class="cart-count" id="cartCount">0</span>
+    ðŸ›’ Mi pedido <span class="cart-count" id="cartCount">0</span>
   </button>
 </nav>
 
 <section class="hero">
   <img src="img/logo.png" alt="Aurum Beauty HN" class="hero-logo">
   <p class="hero-eyebrow">Curated beauty, just for you.</p>
-  <p class="hero-subtitle">Maquillaje & Skincare · Pedidos mensuales</p>
+  <p class="hero-subtitle">Maquillaje & Skincare Â· Pedidos mensuales</p>
   <div class="hero-cta">
-    <a href="#catalogo" class="btn-primary">Ver catálogo</a>
-    <a href="#como-funciona" class="btn-outline">Cómo funciona</a>
+    <a href="#catalogo" class="btn-primary">Ver catÃ¡logo</a>
+    <a href="#como-funciona" class="btn-outline">CÃ³mo funciona</a>
   </div>
 </section>
 
 <section class="how-section" id="como-funciona">
   <div class="reveal">
     <p class="section-label">El proceso</p>
-    <h2 class="section-title">Así de simple<br><em>funciona</em></h2>
+    <h2 class="section-title">AsÃ­ de simple<br><em>funciona</em></h2>
   </div>
   <div class="gold-line"></div>
   <div class="steps">
-    <div class="step reveal"><div class="step-number">01</div><div class="step-title">Elige</div><p class="step-desc">Selecciona los productos y tonos del catálogo y agrégalos a tu pedido.</p></div>
+    <div class="step reveal"><div class="step-number">01</div><div class="step-title">Elige</div><p class="step-desc">Selecciona los productos y tonos del catÃ¡logo y agrÃ©galos a tu pedido.</p></div>
     <div class="step reveal"><div class="step-number">02</div><div class="step-title">Confirma</div><p class="step-desc">Llena tus datos y sube el comprobante del 50% de adelanto por transferencia.</p></div>
-    <div class="step reveal"><div class="step-number">03</div><div class="step-title">Espera</div><p class="step-desc">Compramos tus productos originales en USA y los enviamos a Honduras. Te avisamos cuando estén en camino.</p></div>
+    <div class="step reveal"><div class="step-number">03</div><div class="step-title">Espera</div><p class="step-desc">Compramos tus productos originales en USA y los enviamos a Honduras. Te avisamos cuando estÃ©n en camino.</p></div>
     <div class="step reveal"><div class="step-number">04</div><div class="step-title">Completa</div><p class="step-desc">Paga el saldo restante cuando tu pedido llegue a Honduras.</p></div>
-    <div class="step reveal"><div class="step-number">05</div><div class="step-title">Recibe</div><p class="step-desc">Tu pedido llegará directo a tu puerta. Productos 100% originales, sellados de fábrica.</p></div>
+    <div class="step reveal"><div class="step-number">05</div><div class="step-title">Recibe</div><p class="step-desc">Tu pedido llegarÃ¡ directo a tu puerta. Productos 100% originales, sellados de fÃ¡brica.</p></div>
   </div>
 </section>
 
@@ -229,7 +229,7 @@
   <div class="catalog-inner">
     <div class="catalog-header reveal">
       <p class="section-label">Productos</p>
-      <h2 class="section-title">Nuestro<br><em>Catálogo</em></h2>
+      <h2 class="section-title">Nuestro<br><em>CatÃ¡logo</em></h2>
       <div class="gold-line"></div>
     </div>
 
@@ -247,8 +247,8 @@
       <button class="cat-tab" onclick="switchCat('bbw',this)">Bath & Body Works</button>
     </div>
 
-    <!-- PRODUCTOS - Cargados dinámicamente desde Vento -->
-    <div id="catalogContent"><div class="loading" style="text-align:center;padding:60px;color:#6b7280;font-size:13px;letter-spacing:2px;">Cargando catálogo...</div></div>
+    <!-- PRODUCTOS - Cargados dinÃ¡micamente desde Vento -->
+    <div id="catalogContent"><div class="loading" style="text-align:center;padding:60px;color:#6b7280;font-size:13px;letter-spacing:2px;">Cargando catÃ¡logo...</div></div>
 
 
   </div>
@@ -257,14 +257,14 @@
 <!-- CHECKOUT -->
 <section class="checkout-section" id="checkoutSection">
   <div class="checkout-header reveal">
-    <p class="section-label">Último paso</p>
+    <p class="section-label">Ãšltimo paso</p>
     <h2 class="section-title">Confirma<br><em>tu pedido</em></h2>
     <div class="gold-line"></div>
   </div>
   <div class="order-summary reveal" id="orderSummary"></div>
   <form id="orderForm" class="reveal" action="https://formspree.io/f/xqejbyrj" method="POST" enctype="multipart/form-data">
     <!-- Campos ocultos para datos del carrito -->
-    <input type="hidden" name="_subject" value="✦ Nuevo pedido — Aurum Beauty HN">
+    <input type="hidden" name="_subject" value="âœ¦ Nuevo pedido â€” Aurum Beauty HN">
     <input type="hidden" name="_replyto" id="replyToEmail">
     <input type="hidden" name="Productos_del_pedido" id="hiddenProducts">
     <input type="hidden" name="Total_del_pedido" id="hiddenTotal">
@@ -275,7 +275,7 @@
         <input type="text" id="clientName" name="Nombre" class="form-input" placeholder="Tu nombre" required>
       </div>
       <div class="form-group">
-        <label class="form-label">Correo electrónico</label>
+        <label class="form-label">Correo electrÃ³nico</label>
         <input type="email" id="clientEmail" name="Correo" class="form-input" placeholder="tucorreo@gmail.com" required>
       </div>
     </div>
@@ -296,18 +296,18 @@
     </div>
     <div class="form-divider">datos de pago</div>
     <div style="padding:24px;border:1px solid rgba(201,168,76,0.2);margin-bottom:28px;background:rgba(201,168,76,0.04);">
-      <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Transferencia bancaria · 50% de adelanto</p>
+      <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Transferencia bancaria Â· 50% de adelanto</p>
       <p style="font-size:12px;color:var(--text-muted);line-height:2.4;">
-        🏦 &nbsp;<strong style="color:var(--white)">Banco:</strong> [Tu banco]<br>
-        💳 &nbsp;<strong style="color:var(--white)">Cuenta:</strong> [Tu número de cuenta]<br>
-        👤 &nbsp;<strong style="color:var(--white)">Titular:</strong> [Tu nombre]<br>
-        📱 &nbsp;<strong style="color:var(--white)">Pago móvil:</strong> [Tu número]
+        ðŸ¦ &nbsp;<strong style="color:var(--white)">Banco:</strong> [Tu banco]<br>
+        ðŸ’³ &nbsp;<strong style="color:var(--white)">Cuenta:</strong> [Tu nÃºmero de cuenta]<br>
+        ðŸ‘¤ &nbsp;<strong style="color:var(--white)">Titular:</strong> [Tu nombre]<br>
+        ðŸ“± &nbsp;<strong style="color:var(--white)">Pago mÃ³vil:</strong> [Tu nÃºmero]
       </p>
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(201,168,76,0.1);">
         <p style="font-size:11px;color:var(--text-muted);line-height:2;">
-          ✦ &nbsp;Pedidos cierran el <strong style="color:var(--white)">día 15 de cada mes</strong>.<br>
-          ✦ &nbsp;Entrega estimada: <strong style="color:var(--white)">15 a 25 días hábiles</strong>.<br>
-          ✦ &nbsp;Productos <strong style="color:var(--white)">100% originales</strong>, sellados de fábrica.
+          âœ¦ &nbsp;Pedidos cierran el <strong style="color:var(--white)">dÃ­a 15 de cada mes</strong>.<br>
+          âœ¦ &nbsp;Entrega estimada: <strong style="color:var(--white)">15 a 25 dÃ­as hÃ¡biles</strong>.<br>
+          âœ¦ &nbsp;Productos <strong style="color:var(--white)">100% originales</strong>, sellados de fÃ¡brica.
         </p>
       </div>
     </div>
@@ -315,44 +315,44 @@
       <label class="form-label">Comprobante de transferencia</label>
       <div class="file-upload-area" id="uploadArea">
         <input type="file" id="comprobanteFile" name="Comprobante_de_transferencia" accept="image/*,.pdf" onchange="handleFile(this)">
-        <div class="file-upload-icon">📎</div>
-        <p class="file-upload-text"><strong>Sube tu comprobante aquí</strong><br>Arrastrá o tocá para seleccionar · JPG, PNG o PDF</p>
+        <div class="file-upload-icon">ðŸ“Ž</div>
+        <p class="file-upload-text"><strong>Sube tu comprobante aquÃ­</strong><br>ArrastrÃ¡ o tocÃ¡ para seleccionar Â· JPG, PNG o PDF</p>
       </div>
       <div class="file-preview" id="filePreview"></div>
-      <p class="form-note" id="comprobanteHint">Si aún no has transferido, envíalo después por correo.</p>
+      <p class="form-note" id="comprobanteHint">Si aÃºn no has transferido, envÃ­alo despuÃ©s por correo.</p>
     </div>
     <button type="submit" class="submit-btn">Enviar pedido</button>
   </form>
   <div class="success-msg" id="successMsg">
-    <div class="success-icon">✦</div>
-    <h3 class="success-title">¡Pedido recibido!</h3>
+    <div class="success-icon">âœ¦</div>
+    <h3 class="success-title">Â¡Pedido recibido!</h3>
     <p class="success-text" id="successText"></p>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo"><img src="img/logo.png" alt="Aurum Beauty HN"></div>
-  <p class="footer-tagline">Belleza Premium · Desde USA · Para Honduras</p>
+  <p class="footer-tagline">Belleza Premium Â· Desde USA Â· Para Honduras</p>
   <div class="footer-social"><a href="#">Instagram</a></div>
-  <p class="footer-copy">© 2026 Aurum Beauty HN · Todos los derechos reservados</p>
+  <p class="footer-copy">Â© 2026 Aurum Beauty HN Â· Todos los derechos reservados</p>
 </footer>
 
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-drawer-header">
     <div class="cart-drawer-title">Mi pedido <span id="drawerCount"></span></div>
-    <button class="cart-close" onclick="toggleCart()">✕</button>
+    <button class="cart-close" onclick="toggleCart()">âœ•</button>
   </div>
   <div class="cart-items" id="cartItems">
-    <div class="cart-empty"><div class="cart-empty-icon">🛒</div><p class="cart-empty-text">Tu pedido está vacío.<br>Agrega productos del catálogo.</p></div>
+    <div class="cart-empty"><div class="cart-empty-icon">ðŸ›’</div><p class="cart-empty-text">Tu pedido estÃ¡ vacÃ­o.<br>Agrega productos del catÃ¡logo.</p></div>
   </div>
   <div class="cart-footer">
     <div class="cart-subtotal">
       <span class="cart-subtotal-label">Subtotal</span>
       <span class="cart-subtotal-amount" id="cartTotal">L0</span>
     </div>
-    <p class="cart-note">✦ Precios todo incluido · 50% de adelanto requerido</p>
-    <button class="cart-checkout-btn" id="checkoutBtn" onclick="goToCheckout()" disabled>Continuar con mis datos →</button>
+    <p class="cart-note">âœ¦ Precios todo incluido Â· 50% de adelanto requerido</p>
+    <button class="cart-checkout-btn" id="checkoutBtn" onclick="goToCheckout()" disabled>Continuar con mis datos â†’</button>
   </div>
 </div>
 
@@ -400,18 +400,18 @@
     var catInfo = CATEGORIES.find(function(c){ return c.key === cat; });
     var products = Object.values(allProducts).filter(function(p){ return p.category === cat; });
     if (products.length === 0) {
-      document.getElementById('catalogContent').innerHTML = '<div style="text-align:center;padding:60px;color:#6b7280;">No hay productos en esta categoría.</div>';
+      document.getElementById('catalogContent').innerHTML = '<div style="text-align:center;padding:60px;color:#6b7280;">No hay productos en esta categorÃ­a.</div>';
       return;
     }
     var html = '<div class="cat-section active" id="cat-' + cat + '" style="animation:fadeUp 0.4s ease;">';
-    html += '<p class="cat-section-title">✦ <em>' + catInfo.title + '</em></p>';
+    html += '<p class="cat-section-title">âœ¦ <em>' + catInfo.title + '</em></p>';
     html += '<div class="catalog-grid">';
     products.forEach(function(p) {
       var inCart = cart.some(function(c){ return c.id === p.id; });
       var tones = p.tones ? p.tones.split(',').map(function(t){ return t.trim(); }).filter(Boolean) : [];
       html += '<div class="product-card' + (inCart ? ' in-cart' : '') + '" data-id="' + p.id + '" data-price="' + p.price + '">';
       if (p.badge) html += '<span class="product-badge">' + p.badge + '</span>';
-      html += '<div class="in-cart-badge">✓</div>';
+      html += '<div class="in-cart-badge">âœ“</div>';
       if (p.id === 'bl1') {
         html += '<div class="product-img" style="padding:0;overflow:hidden;"><img id="img-bl1" src="img/bl1-happy.jpg" alt="' + p.name + '" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.3s;"></div>';
       } else {
@@ -423,14 +423,14 @@
       if (tones.length > 0) {
         html += '<span class="tone-label">Selecciona tono</span>';
         html += '<select class="tone-select" id="tone-' + p.id + '">';
-        html += '<option value="">— Elige un tono —</option>';
+        html += '<option value="">â€” Elige un tono â€”</option>';
         tones.forEach(function(t){ html += '<option>' + t + '</option>'; });
         html += '</select>';
       } else {
-        html += '<span class="no-tone">Tono único</span>';
+        html += '<span class="no-tone">Tono Ãºnico</span>';
       }
       html += '<div class="product-pricing"><div class="product-price">L' + p.price.toLocaleString() + ' <span>todo incluido</span></div></div>';
-      html += '<button class="add-btn' + (inCart ? ' added' : '') + '" onclick="addToCart(\'' + p.id + '\')">' + (inCart ? '✓ Agregado' : '+ Agregar al pedido') + '</button>';
+      html += '<button class="add-btn' + (inCart ? ' added' : '') + '" onclick="addToCart(\'' + p.id + '\')">' + (inCart ? 'âœ“ Agregado' : '+ Agregar al pedido') + '</button>';
       html += '</div></div>';
     });
     html += '</div></div>';
@@ -473,8 +473,8 @@
     document.getElementById('cartTotal').textContent='L'+total.toLocaleString();
     document.getElementById('checkoutBtn').disabled=count===0;
     const el=document.getElementById('cartItems');
-    el.innerHTML=count===0?'<div class="cart-empty"><div class="cart-empty-icon">🛒</div><p class="cart-empty-text">Tu pedido está vacío.<br>Agrega productos del catálogo.</p></div>':
-      cart.map(item=>`<div class="cart-item"><div class="cart-item-emoji">${item.emoji}</div><div class="cart-item-info"><div class="cart-item-brand">${item.brand}</div><div class="cart-item-name">${item.name}</div>${item.tone?`<div class="cart-item-tone">${item.tone}</div>`:''}<div class="cart-item-price">L${item.price.toLocaleString()}</div></div><button class="cart-item-remove" onclick="removeFromCart('${item.id}')">✕</button></div>`).join('');
+    el.innerHTML=count===0?'<div class="cart-empty"><div class="cart-empty-icon">ðŸ›’</div><p class="cart-empty-text">Tu pedido estÃ¡ vacÃ­o.<br>Agrega productos del catÃ¡logo.</p></div>':
+      cart.map(item=>`<div class="cart-item"><div class="cart-item-emoji">${item.emoji}</div><div class="cart-item-info"><div class="cart-item-brand">${item.brand}</div><div class="cart-item-name">${item.name}</div>${item.tone?`<div class="cart-item-tone">${item.tone}</div>`:''}<div class="cart-item-price">L${item.price.toLocaleString()}</div></div><button class="cart-item-remove" onclick="removeFromCart('${item.id}')">âœ•</button></div>`).join('');
   }
 
   function toggleCart(){document.getElementById('cartDrawer').classList.contains('open')?closeCart():openCart();}
@@ -491,13 +491,13 @@
     const total=cart.reduce((s,i)=>s+i.price,0),adelanto=Math.round(total*0.5);
     document.getElementById('orderSummary').innerHTML=`
       <p class="summary-title">Resumen de tu pedido</p>
-      ${cart.map(item=>`<div class="summary-item"><div><div>${item.emoji} ${item.brand} — ${item.name}</div>${item.tone?`<div class="summary-item-tone">Tono/Aroma: ${item.tone}</div>`:''}</div><div class="summary-item-price">L${item.price.toLocaleString()}</div></div>`).join('')}
+      ${cart.map(item=>`<div class="summary-item"><div><div>${item.emoji} ${item.brand} â€” ${item.name}</div>${item.tone?`<div class="summary-item-tone">Tono/Aroma: ${item.tone}</div>`:''}</div><div class="summary-item-price">L${item.price.toLocaleString()}</div></div>`).join('')}
       <div class="summary-total"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;">Total</span><span class="summary-total-amount">L${total.toLocaleString()}</span></div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding:12px 0;border-top:1px solid rgba(30,58,138,0.1);">
         <span style="font-size:11px;color:var(--text-muted);">50% de adelanto</span>
         <span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--blue-light);">L${adelanto.toLocaleString()}</span>
       </div>
-      <button class="edit-cart-btn" onclick="editCart()">← Editar productos</button>`;
+      <button class="edit-cart-btn" onclick="editCart()">â† Editar productos</button>`;
     setTimeout(()=>section.scrollIntoView({behavior:'smooth',block:'start'}),100);
   }
 
@@ -536,7 +536,7 @@
     const file=input.files[0];if(!file)return;
     const preview=document.getElementById('filePreview');
     preview.style.display='block';
-    preview.innerHTML=(file.type.includes('pdf')?'📄':'🖼️')+' &nbsp;<strong>'+file.name+'</strong> &nbsp;·&nbsp;'+(file.size/1024).toFixed(0)+' KB &nbsp;<span style="color:var(--gold-light)">✓ Listo</span>';
+    preview.innerHTML=(file.type.includes('pdf')?'ðŸ“„':'ðŸ–¼ï¸')+' &nbsp;<strong>'+file.name+'</strong> &nbsp;Â·&nbsp;'+(file.size/1024).toFixed(0)+' KB &nbsp;<span style="color:var(--gold-light)">âœ“ Listo</span>';
     document.getElementById('uploadArea').style.borderColor='var(--gold)';
   }
 
@@ -549,7 +549,7 @@
     const file=document.getElementById('comprobanteFile').files[0];
     const total=cart.reduce((s,i)=>s+i.price,0),adelanto=Math.round(total*0.5);
     document.getElementById('replyToEmail').value=email;
-    const productLines=cart.map(i=>`${i.brand} — ${i.name}${i.tone?' ('+i.tone+')':''}: L${i.price.toLocaleString()}`).join(' | ');
+    const productLines=cart.map(i=>`${i.brand} â€” ${i.name}${i.tone?' ('+i.tone+')':''}: L${i.price.toLocaleString()}`).join(' | ');
     document.getElementById('hiddenProducts').value=productLines;
     document.getElementById('hiddenTotal').value='L'+total.toLocaleString();
     document.getElementById('hiddenAdelanto').value='L'+adelanto.toLocaleString();
@@ -559,14 +559,14 @@
       .then(r=>{
         if(r.ok){
           this.style.display='none';
-          document.getElementById('successText').innerHTML=`Hola <strong style="color:var(--blue)">${name}</strong>, tu pedido fue recibido. 💙<br><br>Enviamos la confirmación a <strong style="color:var(--black)">${email}</strong><br><br><span style="font-size:11px;display:block;text-align:left;padding:16px;border:1px solid rgba(30,58,138,0.15);background:rgba(30,58,138,0.04);line-height:2.2;">${cart.map(i=>`📦 ${i.brand} — ${i.name}${i.tone?' · '+i.tone:''} · <strong style="color:var(--blue)">L${i.price.toLocaleString()}</strong>`).join('<br>')}<br><br>💳 Adelanto requerido: <strong style="color:var(--blue)">L${adelanto.toLocaleString()}</strong><br>${file?'✓ Comprobante adjunto: '+file.name:'⚠ Sin comprobante — envíalo después por Instagram.'}</span><br>Nos pondremos en contacto en menos de 24 horas. ✦`;
+          document.getElementById('successText').innerHTML=`Hola <strong style="color:var(--blue)">${name}</strong>, tu pedido fue recibido. ðŸ’™<br><br>Enviamos la confirmaciÃ³n a <strong style="color:var(--black)">${email}</strong><br><br><span style="font-size:11px;display:block;text-align:left;padding:16px;border:1px solid rgba(30,58,138,0.15);background:rgba(30,58,138,0.04);line-height:2.2;">${cart.map(i=>`ðŸ“¦ ${i.brand} â€” ${i.name}${i.tone?' Â· '+i.tone:''} Â· <strong style="color:var(--blue)">L${i.price.toLocaleString()}</strong>`).join('<br>')}<br><br>ðŸ’³ Adelanto requerido: <strong style="color:var(--blue)">L${adelanto.toLocaleString()}</strong><br>${file?'âœ“ Comprobante adjunto: '+file.name:'âš  Sin comprobante â€” envÃ­alo despuÃ©s por Instagram.'}</span><br>Nos pondremos en contacto en menos de 24 horas. âœ¦`;
           document.getElementById('successMsg').classList.add('show');
         } else {
           btn.textContent='Enviar pedido';btn.disabled=false;
-          alert('Hubo un error al enviar. Intenta de nuevo o contáctanos por Instagram.');
+          alert('Hubo un error al enviar. Intenta de nuevo o contÃ¡ctanos por Instagram.');
         }
       })
-      .catch(()=>{btn.textContent='Enviar pedido';btn.disabled=false;alert('Sin conexión. Verifica tu internet e intenta de nuevo.');});
+      .catch(()=>{btn.textContent='Enviar pedido';btn.disabled=false;alert('Sin conexiÃ³n. Verifica tu internet e intenta de nuevo.');});
   });
 
   // =============================================
@@ -580,7 +580,7 @@
       renderCategory('bases');
     };
     s.onerror = function(){
-      document.getElementById('catalogContent').innerHTML = '<div style="text-align:center;padding:60px;color:#6b7280;">Error al cargar el catálogo. Intenta recargar la página.</div>';
+      document.getElementById('catalogContent').innerHTML = '<div style="text-align:center;padding:60px;color:#6b7280;">Error al cargar el catÃ¡logo. Intenta recargar la pÃ¡gina.</div>';
     };
     document.body.appendChild(s);
   })();
