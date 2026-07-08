@@ -409,11 +409,16 @@
     return tone.split(' - ')[0].replace(/\s+/g, '');
   }
 
+  function imgPath(pid, file) {
+    if (pid === 'b1') return 'img/bases/' + file + '.png';
+    return 'img/bases/' + pid + '/' + file + '.jpg';
+  }
+
   function buildProductImage(p) {
     if (p.category === 'bases' && p.hasImages) {
       return '<div class="product-carousel" data-product="' + p.id + '">' +
         '<div class="carousel-track">' +
-          '<div class="carousel-slide"><img src="img/bases/' + p.id + '-tones.jpg" alt="Todos los tonos"></div>' +
+          '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones') + '" alt="Todos los tonos"></div>' +
         '</div>' +
         '<div class="carousel-dots"><span class="carousel-dot active"></span></div>' +
       '</div>';
@@ -430,9 +435,9 @@
     var toneCode = toneToFile(tone);
     var track = carousel.querySelector('.carousel-track');
     track.innerHTML =
-      '<div class="carousel-slide"><img src="img/bases/' + productId + '-' + toneCode + '.jpg" alt="Producto" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
-      '<div class="carousel-slide"><img src="img/bases/' + productId + '-' + toneCode + '-tones.jpg" alt="Swatch" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
-      '<div class="carousel-slide"><img src="img/bases/' + productId + '-tones.jpg" alt="Todos los tonos"></div>';
+      '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode) + '" alt="Producto" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
+      '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode + '-tones') + '" alt="Swatch" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
+      '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones') + '" alt="Todos los tonos"></div>';
     var dotsContainer = carousel.querySelector('.carousel-dots');
     dotsContainer.innerHTML = '<span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span>';
     track.style.transform = 'translateX(0)';
