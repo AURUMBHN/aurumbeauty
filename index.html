@@ -481,6 +481,12 @@
     html += '</div></div>';
     document.getElementById('catalogContent').innerHTML = html;
     initCarousels();
+    document.querySelectorAll('.tone-select').forEach(function(sel) {
+      sel.addEventListener('change', function() {
+        var pid = this.id.replace('tone-', '');
+        if (this.value) updateCarousel(pid, this.value);
+      });
+    });
   }
 
   function switchCat(cat, btn) {
@@ -494,8 +500,19 @@
   // =============================================
   let cart=[];
 
+  function findProduct(id) {
+    var cats = Object.keys(allProducts);
+    for (var i = 0; i < cats.length; i++) {
+      var list = allProducts[cats[i]];
+      for (var j = 0; j < list.length; j++) {
+        if (list[j].id === id) return list[j];
+      }
+    }
+    return null;
+  }
+
   function addToCart(id) {
-    var p = allProducts[id];
+    var p = findProduct(id);
     if (!p) return;
     var toneEl = document.getElementById('tone-' + id);
     var tone = toneEl ? toneEl.value : null;
