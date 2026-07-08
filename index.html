@@ -447,7 +447,7 @@
   function renderCategory(cat) {
     activeCat = cat;
     var catInfo = CATEGORIES.find(function(c){ return c.key === cat; });
-    var products = Object.values(allProducts).filter(function(p){ return p.category === cat; });
+    var products = allProducts[cat] || [];
     if (products.length === 0) {
       document.getElementById('catalogContent').innerHTML = '<div style="text-align:center;padding:60px;color:#6b7280;">No hay productos en esta categoría.</div>';
       return;
