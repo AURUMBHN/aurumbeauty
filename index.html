@@ -416,11 +416,14 @@
 
   function buildProductImage(p) {
     if (p.category === 'bases' && p.hasImages) {
+      var slides = '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones') + '" alt="Todos los tonos"></div>';
+      if (p.id === 'b11') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones2') + '" alt="Todos los tonos 2"></div>';
+      var dotCount = p.id === 'b11' ? 2 : 1;
+      var dotsHtml = '';
+      for (var i = 0; i < dotCount; i++) dotsHtml += '<span class="carousel-dot' + (i === 0 ? ' active' : '') + '"></span>';
       return '<div class="product-carousel" data-product="' + p.id + '">' +
-        '<div class="carousel-track">' +
-          '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones') + '" alt="Todos los tonos"></div>' +
-        '</div>' +
-        '<div class="carousel-dots"><span class="carousel-dot active"></span></div>' +
+        '<div class="carousel-track">' + slides + '</div>' +
+        '<div class="carousel-dots">' + dotsHtml + '</div>' +
       '</div>';
     } else if (p.id === 'bl1') {
       return '<div class="product-img" style="padding:0;overflow:hidden;"><img id="img-bl1" src="img/bl1-happy.jpg" alt="' + p.name + '" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.3s;"></div>';
@@ -434,12 +437,17 @@
     if (!carousel) return;
     var toneCode = toneToFile(tone);
     var track = carousel.querySelector('.carousel-track');
-    track.innerHTML =
+    var slidesHtml =
       '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode) + '" alt="Producto" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
       '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode + '-tones') + '" alt="Swatch" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
       '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones') + '" alt="Todos los tonos"></div>';
+    if (productId === 'b11') slidesHtml += '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones2') + '" alt="Todos los tonos 2"></div>';
+    track.innerHTML = slidesHtml;
     var dotsContainer = carousel.querySelector('.carousel-dots');
-    dotsContainer.innerHTML = '<span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span>';
+    var dotCount = track.querySelectorAll('.carousel-slide').length;
+    var dotsHtml = '';
+    for (var i = 0; i < dotCount; i++) dotsHtml += '<span class="carousel-dot' + (i === 0 ? ' active' : '') + '"></span>';
+    dotsContainer.innerHTML = dotsHtml;
     track.style.transform = 'translateX(0)';
     initCarousels();
   }
