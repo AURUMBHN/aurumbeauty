@@ -419,12 +419,13 @@
   }
 
   function imgPath(pid, file) {
-    if (pid === 'b1') return 'img/bases/' + file + '.jpg';
-    return 'img/bases/' + pid + '/' + file + '.jpg';
+    var folder = pid.charAt(0) === 'c' ? 'correctores' : 'bases';
+    if (pid === 'b1') return 'img/' + folder + '/' + file + '.jpg';
+    return 'img/' + folder + '/' + pid + '/' + file + '.jpg';
   }
 
   function buildProductImage(p) {
-    if (p.category === 'bases' && p.hasImages) {
+    if ((p.category === 'bases' || p.category === 'correctores') && p.hasImages) {
       var slides = '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones') + '" alt="Todos los tonos"></div>';
       if (p.id === 'b11' || p.id === 'b17') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones2') + '" alt="Todos los tonos 2"></div>';
       if (p.id === 'b17') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones3') + '" alt="Todos los tonos 3"></div>';
