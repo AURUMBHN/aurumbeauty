@@ -414,7 +414,8 @@
   // =============================================
   var activeCat = 'bases';
 
-  function toneToFile(tone) {
+  function toneToFile(tone, productId, toneIndex) {
+    if (productId === 'bl3' && toneIndex === 1) return 'Benetint2';
     return tone.split(' - ')[0].replace(/\s+/g, '');
   }
 
@@ -442,10 +443,10 @@
     }
   }
 
-  function updateCarousel(productId, tone) {
+  function updateCarousel(productId, tone, toneIndex) {
     var carousel = document.querySelector('.product-carousel[data-product="' + productId + '"]');
     if (!carousel) return;
-    var toneCode = toneToFile(tone);
+    var toneCode = toneToFile(tone, productId, toneIndex);
     var track = carousel.querySelector('.carousel-track');
     var slidesHtml =
       '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode) + '" alt="Producto" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
@@ -504,7 +505,7 @@
     document.querySelectorAll('.tone-select').forEach(function(sel) {
       sel.addEventListener('change', function() {
         var pid = this.id.replace('tone-', '');
-        if (this.value) updateCarousel(pid, this.value);
+        if (this.value) updateCarousel(pid, this.value, this.selectedIndex - 1);
       });
     });
   }
@@ -605,9 +606,9 @@
     var id = e.target.id;
     var tone = e.target.value;
     var pid = id.replace('tone-','');
-    var p = allProducts[pid];
+    var p = findProduct(pid);
     if(p && p.hasImages && tone) {
-      updateCarousel(pid, tone);
+      updateCarousel(pid, tone, e.target.selectedIndex - 1);
     }
     if(!productImages[id] || !productImages[id][tone]) return;
     var imgId = 'img-' + pid;
