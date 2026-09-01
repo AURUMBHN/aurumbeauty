@@ -428,10 +428,10 @@
   function buildProductImage(p) {
     if ((p.category === 'bases' || p.category === 'correctores' || p.category === 'blushes') && p.hasImages) {
       var slides = '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones') + '" alt="Todos los tonos"></div>';
-      if (p.id === 'b11' || p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c14' || p.id === 'c16') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones2') + '" alt="Todos los tonos 2"></div>';
+      if (p.id === 'b11' || p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c14' || p.id === 'c16' || p.id === 'bl12') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones2') + '" alt="Todos los tonos 2"></div>';
       if (p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c16') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones3') + '" alt="Todos los tonos 3"></div>';
       if (p.id === 'c16') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones4') + '" alt="Todos los tonos 4"></div>';
-      var dotCount = p.id === 'c16' ? 4 : ((p.id === 'b17' || p.id === 'c2' || p.id === 'c5') ? 3 : ((p.id === 'b11' || p.id === 'c14') ? 2 : 1));
+      var dotCount = p.id === 'c16' ? 4 : ((p.id === 'b17' || p.id === 'c2' || p.id === 'c5') ? 3 : ((p.id === 'b11' || p.id === 'c14' || p.id === 'bl12') ? 2 : 1));
       var dotsHtml = '';
       for (var i = 0; i < dotCount; i++) dotsHtml += '<span class="carousel-dot' + (i === 0 ? ' active' : '') + '"></span>';
       return '<div class="product-carousel" data-product="' + p.id + '">' +
@@ -452,7 +452,7 @@
       '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode) + '" alt="Producto" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
       '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode + '-tones') + '" alt="Swatch" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
       '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones') + '" alt="Todos los tonos"></div>';
-    if (productId === 'b11' || productId === 'b17' || productId === 'c2' || productId === 'c5' || productId === 'c14' || productId === 'c16') slidesHtml += '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones2') + '" alt="Todos los tonos 2"></div>';
+    if (productId === 'b11' || productId === 'b17' || productId === 'c2' || productId === 'c5' || productId === 'c14' || productId === 'c16' || productId === 'bl12') slidesHtml += '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones2') + '" alt="Todos los tonos 2"></div>';
     if (productId === 'b17' || productId === 'c2' || productId === 'c5' || productId === 'c16') slidesHtml += '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones3') + '" alt="Todos los tonos 3"></div>';
     if (productId === 'c16') slidesHtml += '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones4') + '" alt="Todos los tonos 4"></div>';
     track.innerHTML = slidesHtml;
@@ -763,3 +763,4 @@
 </script>
 </body>
 </html>
+
