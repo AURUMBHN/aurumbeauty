@@ -414,19 +414,23 @@
   // =============================================
   var activeCat = 'bases';
 
+  function fileSafeName(value) {
+    return value.split(' - ')[0].replace(/&/g, 'and').replace(/[^A-Za-z0-9.]+/g, '');
+  }
+
   function toneToFile(tone, productId, toneIndex) {
     if (productId === 'bl3' && toneIndex === 1) return 'Benetint2';
-    return tone.split(' - ')[0].replace(/\s+/g, '');
+    return fileSafeName(tone);
   }
 
   function imgPath(pid, file) {
-    var folder = pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases'));
+    var folder = pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases')));
     if (pid === 'b1') return 'img/' + folder + '/' + file + '.jpg';
     return 'img/' + folder + '/' + pid + '/' + file + '.jpg';
   }
 
   function buildProductImage(p) {
-    if (('bases correctores blushes bronzers'.indexOf(p.category) !== -1) && p.hasImages) {
+    if (('bases correctores blushes bronzers iluminadores'.indexOf(p.category) !== -1) && p.hasImages) {
       var slides = '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones') + '" alt="Todos los tonos"></div>';
       if (p.id === 'b11' || p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c14' || p.id === 'c16' || p.id === 'bl12') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones2') + '" alt="Todos los tonos 2"></div>';
       if (p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c16') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones3') + '" alt="Todos los tonos 3"></div>';
@@ -763,4 +767,5 @@
 </script>
 </body>
 </html>
+
 
