@@ -420,6 +420,7 @@
 
   function toneToFile(tone, productId, toneIndex) {
     if (productId === 'bl3' && toneIndex === 1) return 'Benetint2';
+    if (productId === 'il5' && toneIndex === 0) return 'Bright&Butta';
     return fileSafeName(tone);
   }
 
@@ -434,7 +435,7 @@
     var max = prefix === 'br' ? 14 : (prefix === 'c' ? 16 : 17);
     for (var i = 1; i <= max; i++) ACTIVE_CAROUSEL_IDS[prefix + i] = true;
   });
-  for (var il = 1; il <= 4; il++) ACTIVE_CAROUSEL_IDS['il' + il] = true;
+  for (var il = 1; il <= 5; il++) ACTIVE_CAROUSEL_IDS['il' + il] = true;
 
   function hasCarouselImages(p) {
     return p && (p.hasImages === true || ACTIVE_CAROUSEL_IDS[p.id] === true);
@@ -778,4 +779,5 @@
 </script>
 </body>
 </html>
+
 
