@@ -429,8 +429,19 @@
     return 'img/' + folder + '/' + pid + '/' + file + '.jpg';
   }
 
+  var ACTIVE_CAROUSEL_IDS = {};
+  ['b','c','bl','br'].forEach(function(prefix) {
+    var max = prefix === 'br' ? 14 : (prefix === 'c' ? 16 : 17);
+    for (var i = 1; i <= max; i++) ACTIVE_CAROUSEL_IDS[prefix + i] = true;
+  });
+  for (var il = 1; il <= 4; il++) ACTIVE_CAROUSEL_IDS['il' + il] = true;
+
+  function hasCarouselImages(p) {
+    return p && (p.hasImages === true || ACTIVE_CAROUSEL_IDS[p.id] === true);
+  }
+
   function buildProductImage(p) {
-    if (('bases correctores blushes bronzers iluminadores'.indexOf(p.category) !== -1) && p.hasImages) {
+    if (hasCarouselImages(p)) {
       var slides = '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones') + '" alt="Todos los tonos"></div>';
       if (p.id === 'b11' || p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c14' || p.id === 'c16' || p.id === 'bl12') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones2') + '" alt="Todos los tonos 2"></div>';
       if (p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c16') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones3') + '" alt="Todos los tonos 3"></div>';
@@ -611,7 +622,7 @@
     var tone = e.target.value;
     var pid = id.replace('tone-','');
     var p = findProduct(pid);
-    if(p && p.hasImages && tone) {
+    if(hasCarouselImages(p) && tone) {
       updateCarousel(pid, tone, e.target.selectedIndex - 1);
     }
     if(!productImages[id] || !productImages[id][tone]) return;
@@ -767,5 +778,4 @@
 </script>
 </body>
 </html>
-
 
