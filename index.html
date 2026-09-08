@@ -425,7 +425,7 @@
   }
 
   function imgPath(pid, file) {
-    var folder = pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases')));
+    var folder = pid.charAt(0) === 'l' ? 'labiales' : (pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases'))));
     if (pid === 'b1') return 'img/' + folder + '/' + file + '.jpg';
     return 'img/' + folder + '/' + pid + '/' + file + '.jpg';
   }
@@ -435,7 +435,8 @@
     var max = prefix === 'br' ? 14 : (prefix === 'c' ? 16 : 17);
     for (var i = 1; i <= max; i++) ACTIVE_CAROUSEL_IDS[prefix + i] = true;
   });
-  for (var il = 1; il <= 8; il++) ACTIVE_CAROUSEL_IDS['il' + il] = true;
+  for (var il = 1; il <= 11; il++) ACTIVE_CAROUSEL_IDS['il' + il] = true;
+  for (var lip = 1; lip <= 15; lip++) ACTIVE_CAROUSEL_IDS['l' + lip] = true;
 
   function hasCarouselImages(p) {
     return p && (p.hasImages === true || ACTIVE_CAROUSEL_IDS[p.id] === true);
@@ -779,5 +780,3 @@
 </script>
 </body>
 </html>
-
-
