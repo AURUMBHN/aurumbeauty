@@ -428,13 +428,18 @@
     if (productId === 'l6' && toneIndex === 3) return 'Highbiscus';
     if (productId === 'l6' && toneIndex === 5) return 'BLACKRBERRY';
     if (productId === 'l12' && toneIndex === 2) return 'ThatsChic';
+    if (productId === 'l14' && toneIndex === 4) return 'PBJ';
     return fileSafeName(tone);
   }
 
-  function imgPath(pid, file) {
+  function imgPathWithExt(pid, file, ext) {
     var folder = pid.charAt(0) === 'l' ? 'labiales' : (pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases'))));
-    if (pid === 'b1') return 'img/' + folder + '/' + file + '.jpg';
-    return 'img/' + folder + '/' + pid + '/' + file + '.jpg';
+    if (pid === 'b1') return 'img/' + folder + '/' + file + '.' + ext;
+    return 'img/' + folder + '/' + pid + '/' + file + '.' + ext;
+  }
+
+  function imgPath(pid, file) {
+    return imgPathWithExt(pid, file, 'jpg');
   }
 
   function hideBrokenImage(img) {
@@ -443,18 +448,12 @@
   }
 
   function fallbackImage(img, pid, file) {
-    var l13Fallbacks = {
-      'l13-Pioneer': 'l13-20Pioneer',
-      'l13-Pioneer-tones': 'l13-20Pioneer-tones',
-      'l13-Dancer': 'l13-118Dancer',
-      'l13-Dancer-tones': 'l13-118Dancer-tones',
-      'l13-Composer': 'l13-130Composer',
-      'l13-Composer-tones': 'l13-130Composer-tones'
-    };
-    var fallback = pid === 'l13' ? l13Fallbacks[file] : null;
-    if (fallback && !img.dataset.fallbackTried) {
-      img.dataset.fallbackTried = '1';
-      img.src = imgPath(pid, fallback);
+    var candidates = [];
+    ['jpeg', 'png', 'webp'].forEach(function(ext){ candidates.push(imgPathWithExt(pid, file, ext)); });
+    var index = Number(img.dataset.fallbackIndex || 0);
+    if (index < candidates.length) {
+      img.dataset.fallbackIndex = String(index + 1);
+      img.src = candidates[index];
       return;
     }
     hideBrokenImage(img);
@@ -814,5 +813,8 @@
 </script>
 </body>
 </html>
+
+
+
 
 
