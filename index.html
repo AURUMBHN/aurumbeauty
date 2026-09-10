@@ -437,6 +437,33 @@
     return 'img/' + folder + '/' + pid + '/' + file + '.jpg';
   }
 
+  function hideBrokenImage(img) {
+    img.parentElement.style.display = 'none';
+    rebuildDots(img.closest('.product-carousel'));
+  }
+
+  function fallbackImage(img, pid, file) {
+    var l13Fallbacks = {
+      'l13-Pioneer': 'l13-20Pioneer',
+      'l13-Pioneer-tones': 'l13-20Pioneer-tones',
+      'l13-Dancer': 'l13-118Dancer',
+      'l13-Dancer-tones': 'l13-118Dancer-tones',
+      'l13-Composer': 'l13-130Composer',
+      'l13-Composer-tones': 'l13-130Composer-tones'
+    };
+    var fallback = pid === 'l13' ? l13Fallbacks[file] : null;
+    if (fallback && !img.dataset.fallbackTried) {
+      img.dataset.fallbackTried = '1';
+      img.src = imgPath(pid, fallback);
+      return;
+    }
+    hideBrokenImage(img);
+  }
+
+  function slideImg(pid, file, alt) {
+    return '<div class="carousel-slide"><img src="' + imgPath(pid, file) + '" alt="' + alt + '" onerror="fallbackImage(this, \'' + pid + '\', \'' + file + '\')"></div>';
+  }
+
   var ACTIVE_CAROUSEL_IDS = {};
   ['b','c','bl','br'].forEach(function(prefix) {
     var max = prefix === 'br' ? 14 : (prefix === 'c' ? 16 : 17);
@@ -451,10 +478,10 @@
 
   function buildProductImage(p) {
     if (hasCarouselImages(p)) {
-      var slides = '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones') + '" alt="Todos los tonos" onerror="this.parentElement.style.display='none';rebuildDots(this.closest('.product-carousel'))"></div>';
-      if (p.id === 'b11' || p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c14' || p.id === 'c16' || p.id === 'bl12' || p.id === 'il6' || p.id === 'l9') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones2') + '" alt="Todos los tonos 2" onerror="this.parentElement.style.display='none';rebuildDots(this.closest('.product-carousel'))"></div>';
-      if (p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c16') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones3') + '" alt="Todos los tonos 3" onerror="this.parentElement.style.display='none';rebuildDots(this.closest('.product-carousel'))"></div>';
-      if (p.id === 'c16') slides += '<div class="carousel-slide"><img src="' + imgPath(p.id, p.id + '-tones4') + '" alt="Todos los tonos 4" onerror="this.parentElement.style.display='none';rebuildDots(this.closest('.product-carousel'))"></div>';
+      var slides = slideImg(p.id, p.id + '-tones', 'Todos los tonos');
+      if (p.id === 'b11' || p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c14' || p.id === 'c16' || p.id === 'bl12' || p.id === 'il6' || p.id === 'l9') slides += slideImg(p.id, p.id + '-tones2', 'Todos los tonos 2');
+      if (p.id === 'b17' || p.id === 'c2' || p.id === 'c5' || p.id === 'c16') slides += slideImg(p.id, p.id + '-tones3', 'Todos los tonos 3');
+      if (p.id === 'c16') slides += slideImg(p.id, p.id + '-tones4', 'Todos los tonos 4');
       var dotCount = p.id === 'c16' ? 4 : ((p.id === 'b17' || p.id === 'c2' || p.id === 'c5') ? 3 : ((p.id === 'b11' || p.id === 'c14' || p.id === 'bl12' || p.id === 'il6' || p.id === 'l9') ? 2 : 1));
       var dotsHtml = '';
       for (var i = 0; i < dotCount; i++) dotsHtml += '<span class="carousel-dot' + (i === 0 ? ' active' : '') + '"></span>';
@@ -473,12 +500,12 @@
     var toneCode = toneToFile(tone, productId, toneIndex);
     var track = carousel.querySelector('.carousel-track');
     var slidesHtml =
-      '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode) + '" alt="Producto" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
-      '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-' + toneCode + '-tones') + '" alt="Swatch" onerror="this.parentElement.style.display=\'none\';rebuildDots(this.closest(\'.product-carousel\'))"></div>' +
-      '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones') + '" alt="Todos los tonos" onerror="this.parentElement.style.display='none';rebuildDots(this.closest('.product-carousel'))"></div>';
-    if (productId === 'b11' || productId === 'b17' || productId === 'c2' || productId === 'c5' || productId === 'c14' || productId === 'c16' || productId === 'bl12' || productId === 'il6' || productId === 'l9') slidesHtml += '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones2') + '" alt="Todos los tonos 2" onerror="this.parentElement.style.display='none';rebuildDots(this.closest('.product-carousel'))"></div>';
-    if (productId === 'b17' || productId === 'c2' || productId === 'c5' || productId === 'c16') slidesHtml += '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones3') + '" alt="Todos los tonos 3" onerror="this.parentElement.style.display='none';rebuildDots(this.closest('.product-carousel'))"></div>';
-    if (productId === 'c16') slidesHtml += '<div class="carousel-slide"><img src="' + imgPath(productId, productId + '-tones4') + '" alt="Todos los tonos 4" onerror="this.parentElement.style.display='none';rebuildDots(this.closest('.product-carousel'))"></div>';
+      slideImg(productId, productId + '-' + toneCode, 'Producto') +
+      slideImg(productId, productId + '-' + toneCode + '-tones', 'Swatch') +
+      slideImg(productId, productId + '-tones', 'Todos los tonos');
+    if (productId === 'b11' || productId === 'b17' || productId === 'c2' || productId === 'c5' || productId === 'c14' || productId === 'c16' || productId === 'bl12' || productId === 'il6' || productId === 'l9') slidesHtml += slideImg(productId, productId + '-tones2', 'Todos los tonos 2');
+    if (productId === 'b17' || productId === 'c2' || productId === 'c5' || productId === 'c16') slidesHtml += slideImg(productId, productId + '-tones3', 'Todos los tonos 3');
+    if (productId === 'c16') slidesHtml += slideImg(productId, productId + '-tones4', 'Todos los tonos 4');
     track.innerHTML = slidesHtml;
     var dotsContainer = carousel.querySelector('.carousel-dots');
     var dotCount = track.querySelectorAll('.carousel-slide').length;
@@ -787,4 +814,5 @@
 </script>
 </body>
 </html>
+
 
