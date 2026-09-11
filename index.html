@@ -73,6 +73,7 @@
   .in-cart-badge{position:absolute;top:16px;right:16px;background:var(--blue);color:var(--cream);font-size:16px;z-index:1;width:28px;height:28px;border-radius:50%;display:none;align-items:center;justify-content:center;}
   .product-card.in-cart .in-cart-badge{display:flex;}
   .product-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(135deg,var(--cream-dark),var(--cream));position:relative;}
+  .product-img.option-image img{width:100%;height:100%;object-fit:cover;display:block;}
   .product-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(30,58,138,0.03),transparent 70%);}
   .product-carousel{width:100%;aspect-ratio:1;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--cream-dark),var(--cream));touch-action:pan-y;}
   .carousel-track{display:flex;height:100%;transition:transform 0.3s ease;}
@@ -428,6 +429,7 @@
     if (productId === 'l6' && toneIndex === 3) return 'Highbiscus';
     if (productId === 'l6' && toneIndex === 5) return 'BLACKRBERRY';
     if (productId === 'l12' && toneIndex === 2) return 'ThatsChic';
+    if (productId === 'l14' && toneIndex === 3) return 'Raspberry';
     if (productId === 'l14' && toneIndex === 4) return 'PBJ';
     return fileSafeName(tone);
   }
@@ -488,6 +490,8 @@
         '<div class="carousel-track">' + slides + '</div>' +
         '<div class="carousel-dots">' + dotsHtml + '</div>' +
       '</div>';
+    } else if (p.options && p.options.length && p.options[0].image) {
+      return '<div class="product-img option-image"><img data-product-image="' + p.id + '" src="' + p.options[0].image + '" alt="' + p.name + '"></div>';
     } else {
       return '<div class="product-img emoji-only">' + p.emoji + '</div>';
     }
@@ -536,7 +540,13 @@
       html += '<div class="product-info"><p class="product-brand">' + p.brand + '</p>';
       html += '<h3 class="product-name">' + p.name + '</h3>';
       html += '<p class="product-desc">' + p.description + '</p>';
-      if (tones.length > 0) {
+      if (p.options && p.options.length > 0) {
+        html += '<span class="tone-label">' + (p.optionLabel || 'Selecciona opción') + '</span>';
+        html += '<select class="tone-select option-select" id="option-' + p.id + '">';
+        html += '<option value="">— Elige una opción —</option>';
+        p.options.forEach(function(option, index){ html += '<option value="' + index + '">' + option.name + '</option>'; });
+        html += '</select>';
+      } else if (tones.length > 0) {
         html += '<span class="tone-label">Selecciona tono</span>';
         html += '<select class="tone-select" id="tone-' + p.id + '">';
         html += '<option value="">— Elige un tono —</option>';
@@ -545,17 +555,29 @@
       } else {
         html += '<span class="no-tone">Tono único</span>';
       }
-      html += '<div class="product-pricing"><div class="product-price">L' + p.price.toLocaleString() + ' <span>todo incluido</span></div></div>';
+      html += '<div class="product-pricing"><div class="product-price" id="price-' + p.id + '">L' + p.price.toLocaleString() + ' <span>todo incluido</span></div></div>';
       html += '<button class="add-btn' + (inCart ? ' added' : '') + '" onclick="addToCart(\'' + p.id + '\')">' + (inCart ? '✓ Agregado' : '+ Agregar al pedido') + '</button>';
       html += '</div></div>';
     });
     html += '</div></div>';
     document.getElementById('catalogContent').innerHTML = html;
     initCarousels();
-    document.querySelectorAll('.tone-select').forEach(function(sel) {
+    document.querySelectorAll('.tone-select:not(.option-select)').forEach(function(sel) {
       sel.addEventListener('change', function() {
         var pid = this.id.replace('tone-', '');
         if (this.value) updateCarousel(pid, this.value, this.selectedIndex - 1);
+      });
+    });
+    document.querySelectorAll('.option-select').forEach(function(sel) {
+      sel.addEventListener('change', function() {
+        var pid = this.id.replace('option-', '');
+        var product = findProduct(pid);
+        var option = product && this.value !== '' ? product.options[Number(this.value)] : null;
+        if (!option) return;
+        var priceEl = document.getElementById('price-' + pid);
+        if (priceEl) priceEl.innerHTML = 'L' + option.price.toLocaleString() + ' <span>todo incluido</span>';
+        var imageEl = document.querySelector('[data-product-image="' + pid + '"]');
+        if (imageEl && option.image) imageEl.src = option.image;
       });
     });
   }
@@ -586,9 +608,12 @@
     var p = findProduct(id);
     if (!p) return;
     var toneEl = document.getElementById('tone-' + id);
-    var tone = toneEl ? toneEl.value : null;
+    var optionEl = document.getElementById('option-' + id);
+    var option = optionEl && optionEl.value !== '' && p.options ? p.options[Number(optionEl.value)] : null;
+    var selection = option ? option.name : (toneEl ? toneEl.value : null);
+    var price = option ? option.price : p.price;
     cart = cart.filter(i=>i.id!==id);
-    cart.push({id:p.id, brand:p.brand, name:p.name, emoji:p.emoji, tone:tone, price:p.price});
+    cart.push({id:p.id, brand:p.brand, name:p.name, emoji:p.emoji, tone:selection, price:price});
     updateCart();
     renderCategory(activeCat);
     setTimeout(()=>openCart(),300);
