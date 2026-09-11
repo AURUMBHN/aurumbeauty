@@ -435,7 +435,7 @@
   }
 
   function imgPathWithExt(pid, file, ext) {
-    var folder = pid.charAt(0) === 'l' ? 'labiales' : (pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases'))));
+    var folder = pid.charAt(0) === 'l' ? 'labiales' : (pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.charAt(0) === 'o' ? 'ojos' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases')))));
     if (pid === 'b1') return 'img/' + folder + '/' + file + '.' + ext;
     return 'img/' + folder + '/' + pid + '/' + file + '.' + ext;
   }
@@ -472,6 +472,7 @@
   });
   for (var il = 1; il <= 11; il++) ACTIVE_CAROUSEL_IDS['il' + il] = true;
   for (var lip = 1; lip <= 15; lip++) ACTIVE_CAROUSEL_IDS['l' + lip] = true;
+  ACTIVE_CAROUSEL_IDS['o1'] = true;
 
   function hasCarouselImages(p) {
     return p && (p.hasImages === true || ACTIVE_CAROUSEL_IDS[p.id] === true);
@@ -836,7 +837,7 @@
     document.body.appendChild(s);
   })();
 </script>
-</body>
+<div data-vento-page-branding="" style="position:fixed!important;right:max(12px,env(safe-area-inset-right))!important;bottom:max(12px,env(safe-area-inset-bottom))!important;z-index:2147483647!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;min-width:48px!important;min-height:48px!important;max-width:calc(100vw - 24px)!important;padding:4px!important;border:0!important;background:transparent!important;color:#111827!important;pointer-events:none!important"><a data-vento-page-branding-surface href="https://vento.build/" target="_blank" rel="nofollow sponsored noopener noreferrer" aria-label="Made with Vento (opens in a new tab)" style="display:inline-flex!important;align-items:center!important;gap:10px!important;box-sizing:border-box!important;min-height:40px!important;max-width:calc(100vw - 32px)!important;padding:8px 14px 8px 11px!important;border:1px solid rgba(15,23,42,.12)!important;border-radius:12px!important;background:rgba(248,250,252,.9)!important;color:#111827!important;-webkit-backdrop-filter:blur(12px) saturate(140%)!important;backdrop-filter:blur(12px) saturate(140%)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.72),0 4px 14px rgba(15,23,42,.13),0 12px 32px rgba(15,23,42,.1)!important;white-space:nowrap!important;text-decoration:none!important;pointer-events:auto!important;cursor:pointer!important"><svg data-vento-page-branding-logo width="20" height="20" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="display:block!important;flex:0 0 20px!important;width:20px!important;height:20px!important;color:#111827!important;fill:currentColor!important"><path d="M86.778 105.675V78.5144L108.459 66.0655L101.954 53.6167L80.2738 66.6314L58.0511 53.6167L51.5469 66.0655L73.2275 78.5144V105.675H86.778Z" style="fill:currentColor!important"></path><path d="M160 0V160H0V0H160ZM14.5455 145.455H145.455V14.5455H14.5455V145.455Z" style="fill:currentColor!important"></path></svg><span style="display:inline!important;color:#111827!important;font:500 13px/20px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,sans-serif!important;letter-spacing:.005em!important;text-decoration:none!important;white-space:nowrap!important">Made with <strong style="color:#111827!important;font:650 13px/20px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,sans-serif!important">Vento</strong></span></a></div></body>
 </html>
 
 
