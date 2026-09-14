@@ -435,7 +435,7 @@
   }
 
   function imgPathWithExt(pid, file, ext) {
-    var folder = pid.charAt(0) === 'l' ? 'labiales' : (pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.charAt(0) === 'o' ? 'ojos' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases')))));
+    var folder = pid.charAt(0) === 'l' ? 'labiales' : (pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.indexOf('ss') === 0 ? 'settings' : (pid.charAt(0) === 'o' ? 'ojos' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases'))))));
     if (pid === 'b1') return 'img/' + folder + '/' + file + '.' + ext;
     return 'img/' + folder + '/' + pid + '/' + file + '.' + ext;
   }
@@ -486,12 +486,18 @@
   ACTIVE_CAROUSEL_IDS['o14'] = true;
   ACTIVE_CAROUSEL_IDS['o15'] = true;
   ACTIVE_CAROUSEL_IDS['o16'] = true;
+  ACTIVE_CAROUSEL_IDS['ss1'] = true;
+  ACTIVE_CAROUSEL_IDS['ss2'] = true;
 
   function hasCarouselImages(p) {
     return p && (p.hasImages === true || ACTIVE_CAROUSEL_IDS[p.id] === true);
   }
 
   function buildProductImage(p) {
+    if (p.options && p.options.length > 0) {
+      var defaultOption = p.options[0];
+      return '<div class="product-img option-image"><img data-product-image="' + p.id + '" src="' + defaultOption.image + '" alt="' + p.name + '"></div>';
+    }
     if (hasCarouselImages(p)) {
       var singleTonePaletteIds = ['o11', 'o12', 'o13', 'o14', 'o15', 'o16'];
       var slides = singleTonePaletteIds.indexOf(p.id) !== -1 ? slideImg(p.id, p.id, 'Producto') + slideImg(p.id, p.id + '-tones', 'Todos los tonos') : slideImg(p.id, p.id + '-tones', 'Todos los tonos');
