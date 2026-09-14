@@ -495,15 +495,6 @@
 
   function buildProductImage(p) {
     if (p.options && p.options.length > 0) {
-      if (hasCarouselImages(p)) {
-        var optionSlides = '';
-        var optionDots = '';
-        p.options.forEach(function(option, index) {
-          optionSlides += '<div class="carousel-slide"><img src="' + option.image + '" alt="' + option.name + '" onerror="hideBrokenImage(this)"></div>';
-          optionDots += '<span class="carousel-dot' + (index === 0 ? ' active' : '') + '"></span>';
-        });
-        return '<div class="product-carousel" data-product="' + p.id + '"><div class="carousel-track">' + optionSlides + '</div><div class="carousel-dots">' + optionDots + '</div></div>';
-      }
       var defaultOption = p.options[0];
       return '<div class="product-img option-image"><img data-product-image="' + p.id + '" src="' + defaultOption.image + '" alt="' + p.name + '"></div>';
     }
@@ -606,8 +597,6 @@
         if (!option) return;
         var priceEl = document.getElementById('price-' + pid);
         if (priceEl) priceEl.innerHTML = 'L' + option.price.toLocaleString() + ' <span>todo incluido</span>';
-        var carousel = document.querySelector('.product-carousel[data-product="' + pid + '"]');
-        if (carousel && carousel._goToSlide) carousel._goToSlide(Number(this.value));
         var imageEl = document.querySelector('[data-product-image="' + pid + '"]');
         if (imageEl && option.image) imageEl.src = option.image;
       });
