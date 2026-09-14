@@ -435,7 +435,7 @@
   }
 
   function imgPathWithExt(pid, file, ext) {
-    var folder = pid.charAt(0) === 'l' ? 'labiales' : (pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.indexOf('ss') === 0 ? 'settings' : (pid.charAt(0) === 'o' ? 'ojos' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases'))))));
+    var folder = pid.charAt(0) === 'l' ? 'labiales' : (pid.indexOf('il') === 0 ? 'iluminadores' : (pid.indexOf('br') === 0 ? 'bronzers' : (pid.indexOf('bl') === 0 ? 'blushes' : (pid.indexOf('ss') === 0 ? 'setting' : (pid.charAt(0) === 'o' ? 'ojos' : (pid.charAt(0) === 'c' ? 'correctores' : 'bases'))))));
     if (pid === 'b1') return 'img/' + folder + '/' + file + '.' + ext;
     return 'img/' + folder + '/' + pid + '/' + file + '.' + ext;
   }
