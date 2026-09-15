@@ -420,6 +420,7 @@
   }
 
   function toneToFile(tone, productId, toneIndex) {
+    if (productId === 'ss6' && toneIndex === 0) return 'Tone-upRose';
     if (productId === 'bl3' && toneIndex === 1) return 'Benetint2';
     if (productId === 'il5' && toneIndex === 0) return 'Bright&Butta';
     if (productId === 'l3' && toneIndex === 2) return 'Fussy';
