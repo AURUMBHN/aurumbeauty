@@ -488,6 +488,8 @@
   ACTIVE_CAROUSEL_IDS['o16'] = true;
   ACTIVE_CAROUSEL_IDS['ss1'] = true;
   ACTIVE_CAROUSEL_IDS['ss2'] = true;
+  ACTIVE_CAROUSEL_IDS['ss6'] = true;
+  ACTIVE_CAROUSEL_IDS['ss7'] = true;
 
   function hasCarouselImages(p) {
     return p && (p.hasImages === true || ACTIVE_CAROUSEL_IDS[p.id] === true);
@@ -846,7 +848,7 @@
   // =============================================
   (function(){
     var s = document.createElement('script');
-    s.src = 'https://cloud.vento.build/networks/belenposso2006/aurumbeauty/products.js';
+    s.src = 'https://cloud.vento.build/networks/belenposso2006/aurumbeauty/products.js?v=ss7-mini-645';
     s.onload = function(){
       allProducts = window.AURUM_PRODUCTS || {};
       renderCategory('bases');
