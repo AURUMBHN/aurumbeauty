@@ -74,6 +74,7 @@
   .product-card.in-cart .in-cart-badge{display:flex;}
   .product-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(135deg,var(--cream-dark),var(--cream));position:relative;}
   .product-img.option-image img{width:100%;height:100%;object-fit:cover;display:block;}
+  .product-card[data-id="ss20"] .product-img.option-image img{object-fit:contain;}
   .product-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(30,58,138,0.03),transparent 70%);}
   .product-carousel{width:100%;aspect-ratio:1;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--cream-dark),var(--cream));touch-action:pan-y;}
   .carousel-track{display:flex;height:100%;transition:transform 0.3s ease;}
@@ -581,7 +582,7 @@
         html += '<option value="">— Elige un tono —</option>';
         tones.forEach(function(t){ html += '<option>' + t + '</option>'; });
         html += '</select>';
-      } else {
+      } else if (cat !== 'skincare') {
         html += '<span class="no-tone">Tono único</span>';
       }
       html += '<div class="product-pricing"><div class="product-price" id="price-' + p.id + '">L' + p.price.toLocaleString() + ' <span>todo incluido</span></div></div>';
